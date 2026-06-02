@@ -1,0 +1,35 @@
+diff --git a/src/billing/invoice.py b/src/billing/invoice.py
+index 1111111..2222222 100644
+--- a/src/billing/invoice.py
++++ b/src/billing/invoice.py
+@@ -1,4 +1,5 @@
+ def total(items):
+-    return sum(item.price for item in items)
++    taxable = sum(item.price for item in items if not item.exempt)
++    return taxable
+diff --git a/tests/test_invoice.py b/tests/test_invoice.py
+index 3333333..4444444 100644
+--- a/tests/test_invoice.py
++++ b/tests/test_invoice.py
+@@ -1,3 +1,6 @@
+ def test_invoice_total():
+     assert total([line(10)]) == 10
++
++def test_invoice_ignores_exempt_items():
++    assert total([line(10), exempt_line(5)]) == 10
+diff --git a/src/auth/session.ts b/src/auth/session.ts
+index 5555555..6666666 100644
+--- a/src/auth/session.ts
++++ b/src/auth/session.ts
+@@ -1,4 +1,5 @@
+ export function isExpired(session) {
+-  return Date.now() > session.expiresAt
++  return Date.now() >= session.expiresAt
+ }
+diff --git a/README.md b/README.md
+index 7777777..8888888 100644
+--- a/README.md
++++ b/README.md
+@@ -1,2 +1,3 @@
+ # Example
++Documentation-only change.

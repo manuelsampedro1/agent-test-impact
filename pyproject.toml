@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-test-impact"
+version = "0.1.0"
+description = "Map coding-agent diffs to likely test coverage gaps."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Manuel Sampedro"}]
+keywords = ["ai-agents", "testing", "diff", "verification", "cli"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "License :: OSI Approved :: MIT License",
+  "Environment :: Console",
+]
+
+[project.scripts]
+agent-test-impact = "agent_test_impact.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
