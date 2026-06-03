@@ -1,0 +1,51 @@
+{
+  "schema_version": "agent-proof-packet.v1",
+  "title": "Test impact proof",
+  "verdict": "complete",
+  "changed_files": [
+    {
+      "path": "src/billing/invoice.py",
+      "status": "modified",
+      "additions": 2,
+      "deletions": 1
+    },
+    {
+      "path": "tests/test_invoice.py",
+      "status": "modified",
+      "additions": 3,
+      "deletions": 0
+    },
+    {
+      "path": "src/auth/session.ts",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 1
+    },
+    {
+      "path": "README.md",
+      "status": "modified",
+      "additions": 1,
+      "deletions": 0
+    }
+  ],
+  "checks": [
+    {
+      "name": "unit tests",
+      "status": "pass",
+      "detail": "make test"
+    },
+    {
+      "name": "smoke",
+      "status": "pass",
+      "detail": "make smoke"
+    }
+  ],
+  "risks": [
+    "src/auth/session.ts has packet-backed test evidence but no directly changed nearby test."
+  ],
+  "decisions": [],
+  "evidence_files": [],
+  "command_receipts": [],
+  "open_questions": [],
+  "missing_evidence": []
+}
